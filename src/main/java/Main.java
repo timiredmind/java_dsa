@@ -44,9 +44,9 @@ public class Main {
 //        System.out.println(list.getTail());
 //        System.out.println(list.getLength());
         list.append(2);
-        list.append(3);
+        list.append(1);
         list.append(4);
-        list.prepend(0);
+        list.prepend(1);
 
         list.printList();
 
@@ -54,8 +54,10 @@ public class Main {
 //        list.printList();
 //        System.out.println(list.getLength());
 
-        list.reverse();
+//        list.reverse();
+        list.removeDuplicatesWithSet();
         list.printList();
+
 //        System.out.println(list.getTail().next.value);
 //        System.out.println(list.getHead().value);
 
