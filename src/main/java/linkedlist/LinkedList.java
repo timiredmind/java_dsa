@@ -12,6 +12,12 @@ public class LinkedList {
         this.length = 1;
     }
 
+    public LinkedList() {
+        this.tail = null;
+        this.head = null;
+        this.length = 0;
+    }
+
     @Override
     public String toString() {
         return "LinkedList { head = " + this.head + " }";
@@ -179,6 +185,18 @@ public class LinkedList {
             before = temp;
             temp = after;
         }
+    }
+
+    public Node findMiddleNode() {
+        // floyd tortise and hare algorithm
+        Node slow = this.head;
+        Node fast = this.head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
     }
 
     public static class Node {
