@@ -88,4 +88,24 @@ public class LinkedListTest {
         LinkedList.Node lastNode = thirdNode.next;
         assertEquals(4, lastNode.value);
     }
+
+    @Test
+    public void testBinaryToDecimal1() {
+        final LinkedList list = new LinkedList(1);
+        list.append(0);
+        list.append(1);
+
+        int decimalValue = list.binaryToDecimal();
+        assertEquals(5, decimalValue);
+    }
+
+    @Test
+    public void testBinaryToDecimal2() {
+        final LinkedList list = new LinkedList(1);
+        list.append(1);
+        list.append(1);
+
+        int decimalValue = list.binaryToDecimal();
+        assertEquals(7, decimalValue);
+    }
 }
