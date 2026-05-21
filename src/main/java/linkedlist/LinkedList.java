@@ -230,11 +230,29 @@ public class LinkedList {
         while (temp != null) {
             if (values.contains(temp.value)) {
                 before.next = temp.next;
+                length--;
             } else {
                 values.add(temp.value);
                 before = temp;
             }
             temp = temp.next;
+        }
+    }
+
+    public void removeDuplicateWithoutSet() {
+        Node current = this.head;
+
+        while (current != null) {
+            Node runner = current;
+            while (runner.next != null) {
+                if (current.value == runner.next.value) {
+                    runner.next = runner.next.next;
+                    length--;
+                } else {
+                    runner = runner.next;
+                }
+            }
+            current = current.next;
         }
     }
 

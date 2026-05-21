@@ -42,4 +42,50 @@ public class LinkedListTest {
         assertEquals(3, middleNode.value);
         assertEquals(4, middleNode.next.value);
     }
+
+    @Test
+    public void testRemoveDuplicateWithSet() {
+        final LinkedList list = new LinkedList(1);
+        list.append(2);
+        list.append(1);
+        list.append(3);
+        list.append(4);
+        list.append(4);
+
+        assertEquals(6, list.getLength());
+        list.removeDuplicatesWithSet();
+
+        assertEquals(4, list.getLength());
+        LinkedList.Node firstNode = list.getHead();
+        assertEquals(1, firstNode.value);
+        LinkedList.Node secondNode = firstNode.next;
+        assertEquals(2, secondNode.value);
+        LinkedList.Node thirdNode = secondNode.next;
+        assertEquals(3, thirdNode.value);
+        LinkedList.Node lastNode = thirdNode.next;
+        assertEquals(4, lastNode.value);
+    }
+
+    @Test
+    public void testRemoveDuplicateWithoutSet() {
+        final LinkedList list = new LinkedList(1);
+        list.append(2);
+        list.append(1);
+        list.append(3);
+        list.append(4);
+        list.append(4);
+
+        assertEquals(6, list.getLength());
+        list.removeDuplicateWithoutSet();
+
+        assertEquals(4, list.getLength());
+        LinkedList.Node firstNode = list.getHead();
+        assertEquals(1, firstNode.value);
+        LinkedList.Node secondNode = firstNode.next;
+        assertEquals(2, secondNode.value);
+        LinkedList.Node thirdNode = secondNode.next;
+        assertEquals(3, thirdNode.value);
+        LinkedList.Node lastNode = thirdNode.next;
+        assertEquals(4, lastNode.value);
+    }
 }
