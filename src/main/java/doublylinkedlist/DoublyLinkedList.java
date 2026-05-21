@@ -34,13 +34,29 @@ public class DoublyLinkedList<T> {
         Node<T> newNode = new Node<>(value);
         if (this.head == null) {
             this.head = newNode;
-            this.tail = newNode;
         } else {
             this.tail.next = newNode;
             newNode.prev = tail;
-            this.tail = newNode;
         }
+        this.tail = newNode;
         this.length++;
+    }
+
+    public Node<T> removeLast() {
+        if (this.head == null) {
+            return null;
+        }
+        Node<T> lastNode = this.tail;
+        if (this.head == this.tail) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+        }
+        this.length--;
+        lastNode.prev = null;
+        return lastNode;
     }
 
     public static class Node<T> {
