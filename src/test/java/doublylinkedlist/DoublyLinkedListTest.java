@@ -100,4 +100,37 @@ public class DoublyLinkedListTest {
         assertEquals(dll.getHead().next, dll.getTail());
         assertEquals(dll.getTail().prev, dll.getHead());
     }
+
+    @Test
+    public void testPrependEmptyList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>();
+        dll.prepend(1);
+
+
+        assertEquals(1, dll.getLength());
+        assertEquals(dll.getHead(), dll.getTail());
+        assertEquals(1, dll.getHead().value);
+        assertEquals(1, dll.getTail().value);
+    }
+
+    @Test
+    public void testPrependSingleElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+
+        dll.prepend(2);
+        assertEquals(2, dll.getHead().value);
+        assertEquals(1, dll.getTail().value);
+        assertEquals(2, dll.getLength());
+    }
+
+    @Test
+    public void testPrependMultipleElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        dll.append(2);
+        dll.prepend(0);
+
+        assertEquals(3, dll.getLength());
+        assertEquals(0, dll.getHead().value);
+        assertEquals(2, dll.getTail().value);
+    }
 }

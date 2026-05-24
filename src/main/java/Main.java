@@ -1,3 +1,4 @@
+import doublylinkedlist.DoublyLinkedList;
 import linkedlist.LinkedList;
 
 public class Main {
@@ -36,27 +37,27 @@ public class Main {
 //        System.out.println(list.removeLast());
 //        list.printList();
 
-        LinkedList list = new LinkedList(1);
+//        LinkedList list = new LinkedList(1);
 //        System.out.println(list.removeFirst().value);
 //        list.printList();
 //
 //        System.out.println(list.getHead());
 //        System.out.println(list.getTail());
 //        System.out.println(list.getLength());
-        list.append(2);
-        list.append(1);
-        list.append(4);
-        list.prepend(1);
+//        list.append(2);
+//        list.append(1);
+//        list.append(4);
+//        list.prepend(1);
 
-        list.printList();
+//        list.printList();
 
 //        System.out.println(list.remove(0).value);
 //        list.printList();
 //        System.out.println(list.getLength());
 
 //        list.reverse();
-        list.removeDuplicatesWithSet();
-        list.printList();
+//        list.removeDuplicatesWithSet();
+//        list.printList();
 
 //        System.out.println(list.getTail().next.value);
 //        System.out.println(list.getHead().value);
@@ -85,5 +86,13 @@ public class Main {
 //
 //        list.insert(0, 0);
 //        list.printList();
+
+        DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        dll.append(2);
+        dll.append(3);
+        dll.append(4);
+        dll.append(5);
+        dll.prepend(0);
+        dll.printList();
     }
 }

@@ -59,6 +59,27 @@ public class DoublyLinkedList<T> {
         return lastNode;
     }
 
+    public void prepend(T value) {
+        Node<T> newNode = new Node<>(value);
+        if (this.head == null) {
+            this.tail = newNode;
+        } else {
+            this.head.prev = newNode;
+            newNode.next = this.head;
+        }
+        this.head = newNode;
+        length++;
+    }
+
+    public void printList() {
+        Node<T> temp = this.head;
+        while(temp != null) {
+            System.out.print(temp.value + " -> ");
+            temp = temp.next;
+        }
+        System.out.println("null");
+    }
+
     public static class Node<T> {
         public T value;
         public Node<T> prev;
