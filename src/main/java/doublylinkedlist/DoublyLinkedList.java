@@ -71,6 +71,24 @@ public class DoublyLinkedList<T> {
         length++;
     }
 
+    public Node<T> removeFirst() {
+        if (this.head == null) {
+            return null;
+        }
+        final Node<T> temp = this.head;
+        if (this.head == this.tail) {
+            this.head = null;
+            this.tail = null;
+        } else {
+            this.head = this.head.next;
+            this.head.prev = null;
+        }
+        this.length--;
+        temp.next = null;
+        return temp;
+
+    }
+
     public void printList() {
         Node<T> temp = this.head;
         while(temp != null) {
