@@ -1,7 +1,9 @@
 package doublylinkedlist;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 public class DoublyLinkedListTest {
@@ -216,5 +218,29 @@ public class DoublyLinkedListTest {
         assertEquals(2, node.value);
         assertEquals(1, node.prev.value);
         assertEquals(3, node.next.value);
+    }
+
+    @Test
+    public void testSetMethod1() {
+        final  DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        dll.append(2);
+        dll.append(3);
+
+        assertTrue(dll.set(1, 9));
+        var updatedNode = dll.get(1);
+        assertEquals(9, updatedNode.value);
+    }
+
+    @Test
+    public void testSetMethodWithInvalidIndex() {
+        final  DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+
+        assertFalse(dll.set(-1, 5));
+    }
+
+    @Test
+    public void testSetMethodWithInvalidIndex1() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        assertFalse(dll.set(4, 9));
     }
 }

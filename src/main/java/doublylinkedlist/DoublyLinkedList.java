@@ -106,6 +106,15 @@ public class DoublyLinkedList<T> {
         return temp;
     }
 
+    public boolean set(int index, T value) {
+        Node<T> node = get(index);
+        if (node == null) {
+            return false;
+        }
+        node.value = value;
+        return true;
+    }
+
     public void printList() {
         Node<T> temp = this.head;
         while(temp != null) {
