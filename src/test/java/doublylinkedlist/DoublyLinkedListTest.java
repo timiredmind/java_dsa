@@ -182,4 +182,39 @@ public class DoublyLinkedListTest {
         assertEquals(5, dll.getTail().value);
         assertEquals(5, dll.getLength());
     }
+
+    @Test
+    public void testGetWithIndexLessThanZero() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+
+        var node = dll.get(-1);
+        assertNull(node);
+    }
+
+    @Test
+    public void testGetWithIndexMoreThanLength() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        var node = dll.get(2);
+        assertNull(node);
+    }
+
+    @Test
+    public void testGetWithIndex() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        var node = dll.get(0);
+
+        assertEquals(node, dll.getHead());
+    }
+
+    @Test
+    public void testGetWithIndex2() {
+        final  DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        dll.append(2);
+        dll.append(3);
+
+        var node = dll.get(1);
+        assertEquals(2, node.value);
+        assertEquals(1, node.prev.value);
+        assertEquals(3, node.next.value);
+    }
 }

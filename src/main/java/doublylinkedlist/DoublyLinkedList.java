@@ -86,7 +86,24 @@ public class DoublyLinkedList<T> {
         this.length--;
         temp.next = null;
         return temp;
+    }
 
+    public Node<T> get(int index) {
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+        Node<T> temp = this.head;
+        if (index < length/2) {
+            for (int i = 0; i <= index; i++) {
+                temp = temp.next;
+            }
+        } else {
+            temp = this.tail;
+            for (int i = length - 1; i > index; i--) {
+                temp = temp.prev;
+            }
+        }
+        return temp;
     }
 
     public void printList() {
