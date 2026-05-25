@@ -36,7 +36,7 @@ public class DoublyLinkedList<T> {
             this.head = newNode;
         } else {
             this.tail.next = newNode;
-            newNode.prev = tail;
+            newNode.prev = this.tail;
         }
         this.tail = newNode;
         this.length++;
@@ -94,7 +94,7 @@ public class DoublyLinkedList<T> {
         }
         Node<T> temp = this.head;
         if (index < length/2) {
-            for (int i = 0; i <= index; i++) {
+            for (int i = 0; i < index; i++) {
                 temp = temp.next;
             }
         } else {
@@ -112,6 +112,30 @@ public class DoublyLinkedList<T> {
             return false;
         }
         node.value = value;
+        return true;
+    }
+
+
+    public boolean insert(int index, T value) {
+        if (index < 0 || index > this.length) {
+            return false;
+        }
+        if (index == 0) {
+            prepend(value);
+        } else if (index == this.length) {
+            append(value);
+        } else {
+            Node<T> prev = get(index -1);
+            System.out.println(prev.value);
+            Node<T> current = prev.next;
+            Node<T> newNode = new Node<>(value);
+
+            newNode.next = current;
+            newNode.prev = prev;
+            prev.next = newNode;
+            current.prev = newNode;
+            this.length++;
+        }
         return true;
     }
 

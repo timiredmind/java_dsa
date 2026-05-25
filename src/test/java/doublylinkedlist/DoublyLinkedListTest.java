@@ -243,4 +243,49 @@ public class DoublyLinkedListTest {
         final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
         assertFalse(dll.set(4, 9));
     }
+
+    @Test
+    public void testInsertWithEmptyList() {
+        final DoublyLinkedList<Integer> doublyLinkedList = new DoublyLinkedList<>();
+        assertTrue(doublyLinkedList.insert(0, 1));
+        assertEquals(1, doublyLinkedList.getHead().value);
+        assertEquals(1, doublyLinkedList.getTail().value);
+        assertEquals(1, doublyLinkedList.getLength());
+    }
+
+    @Test
+    public void testInsertWithInvalidIndex() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        assertFalse(dll.insert(-1, 2));
+    }
+
+    @Test
+    public void testInsertWithInvalidIndex1() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        assertFalse(dll.insert(3, 3));
+    }
+
+    @Test
+    public void testInsertMethod1() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        dll.append(1);
+
+        assertTrue(dll.insert(1, 3));
+        assertEquals(0, dll.getHead().value);
+        assertEquals(3, dll.get(1).value);
+        assertEquals(1, dll.getTail().value);
+    }
+
+    @Test
+    public void testInsertMethod2() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        dll.append(1);
+        dll.append(2);
+
+        assertTrue(dll.insert(3, 3));
+        assertEquals(0, dll.getHead().value);
+        assertEquals(3, dll.getTail().value);
+        assertEquals(4, dll.getLength());
+    }
+
 }
