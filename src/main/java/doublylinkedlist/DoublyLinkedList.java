@@ -126,7 +126,6 @@ public class DoublyLinkedList<T> {
             append(value);
         } else {
             Node<T> prev = get(index -1);
-            System.out.println(prev.value);
             Node<T> current = prev.next;
             Node<T> newNode = new Node<>(value);
 
@@ -137,6 +136,30 @@ public class DoublyLinkedList<T> {
             this.length++;
         }
         return true;
+    }
+
+    public Node<T> remove(int index) {
+        if (index < 0 || index >= this.length) {
+            return null;
+        }
+        else if(index == 0) {
+            return removeFirst();
+        } else if (index == this.length - 1) {
+            return removeLast();
+        } else {
+            Node<T> current = get(index);
+            Node<T> after = current.next;
+            Node<T> prev = current.prev;
+
+            prev.next = after;
+            after.prev = prev;
+
+            current.next = null;
+            current.prev = null;
+            length--;
+            return current;
+        }
+
     }
 
     public void printList() {

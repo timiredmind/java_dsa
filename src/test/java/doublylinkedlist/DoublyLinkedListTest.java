@@ -288,4 +288,44 @@ public class DoublyLinkedListTest {
         assertEquals(4, dll.getLength());
     }
 
+    @Test
+    public void testRemoveMethodWhenIndexIsLessThanZero() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        assertNull(dll.remove(-2));
+        assertEquals(1, dll.getLength());
+    }
+
+    @Test
+    public void testRemoveMethodWhenIndexExceedsLength() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+
+        assertNull(dll.remove(2));
+        assertEquals(1, dll.getLength());
+    }
+
+    @Test
+    public void testRemoveMethodWhenIndexIsZero() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        dll.append(1);
+
+        var node = dll.remove(0);
+        assertEquals(0, node.value);
+        assertEquals(1, dll.getLength());
+        assertEquals(1, dll.getHead().value);
+        assertEquals(1, dll.getTail().value);
+     }
+
+     @Test
+    public void testRemoveMethodWhenIndexIsLast() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        dll.append(2);
+        dll.append(4);
+
+        var node = dll.remove(2);
+
+        assertEquals(4, node.value);
+        assertEquals(2, dll.getLength());
+        assertEquals(0, dll.getHead().value);
+        assertEquals(2, dll.getTail().value);
+     }
 }
