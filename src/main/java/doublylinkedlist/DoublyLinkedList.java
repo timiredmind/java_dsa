@@ -162,13 +162,30 @@ public class DoublyLinkedList<T> {
 
     }
 
-
     public void swapFirstLast() {
         if (this.length > 2) {
             T headValue = this.head.value;
             this.head.value = this.tail.value;
             this.tail.value = headValue;
         }
+    }
+
+    public void reverse() {
+        Node<T> current = this.head;
+        Node<T> temp;
+        Node<T> after;
+        while (current != null) {
+            temp = current.prev;
+            after = current.next;
+
+            current.next = temp;
+            current.prev = after;
+
+            current = current.prev;
+        }
+        temp = this.head;
+        this.head = this.tail;
+        this.tail = temp;
     }
 
     public void printList() {

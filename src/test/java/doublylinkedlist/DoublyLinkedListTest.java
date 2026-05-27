@@ -363,4 +363,45 @@ public class DoublyLinkedListTest {
         assertEquals(0, dll.getTail().value);
         assertEquals(3, dll.getLength());
     }
+
+    @Test
+    public void testReverseMethod() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        dll.append(2);
+        dll.append(3);
+        dll.append(4);
+        dll.append(5);
+
+        dll.reverse();
+
+        assertEquals(5, dll.getHead().value);
+        assertEquals(1, dll.getTail().value);
+        assertEquals(5, dll.getLength());
+
+        var temp = dll.getHead();
+        for (int index = 5; index >= 1; index--) {
+            assertEquals(index, temp.value);
+            temp = temp.next;
+        }
+    }
+
+    @Test
+    public void testReverseMethodWithSingleElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+
+        dll.reverse();
+
+        assertEquals(1, dll.getHead().value);
+        assertEquals(1, dll.getLength());
+    }
+
+    @Test
+    public void testReverseMethodWithTwoElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(1);
+        dll.append(2);
+        dll.reverse();
+
+        assertEquals(2, dll.getHead().value);
+        assertEquals(1, dll.getTail().value);
+    }
 }
