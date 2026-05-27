@@ -328,4 +328,39 @@ public class DoublyLinkedListTest {
         assertEquals(0, dll.getHead().value);
         assertEquals(2, dll.getTail().value);
      }
+
+
+     @Test
+    public void testSwapFirstLastWithSingleElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+
+        dll.swapFirstLast();
+        assertEquals(0, dll.getHead().value);
+        assertEquals(0, dll.getTail().value);
+        assertEquals(1, dll.getLength());
+    }
+
+    @Test
+    public void testSWapFirstLastWithTwoElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        dll.append(1);
+        dll.swapFirstLast();
+
+        assertEquals(0, dll.getHead().value);
+        assertEquals(1, dll.getTail().value);
+        assertEquals(2, dll.getLength());
+    }
+
+    @Test
+    public void testSwapFirstLastWithMultipleElementList() {
+        final DoublyLinkedList<Integer> dll = new DoublyLinkedList<>(0);
+        dll.append(1);
+        dll.append(2);
+
+        dll.swapFirstLast();
+        assertEquals(2, dll.getHead().value);
+        assertEquals(1, dll.getHead().next.value);
+        assertEquals(0, dll.getTail().value);
+        assertEquals(3, dll.getLength());
+    }
 }
